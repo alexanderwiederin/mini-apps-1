@@ -1,0 +1,28 @@
+{
+  "name": "challenge_2",
+  "version": "1.0.0",
+  "description": "mini_apps_2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderwiederin/hrsf105-mini-apps-1.git"
+  },
+  "author": "alexander wiederin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexanderwiederin/hrsf105-mini-apps-1/issues"
+  },
+  "homepage": "https://github.com/alexanderwiederin/hrsf105-mini-apps-1#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.18.4",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
