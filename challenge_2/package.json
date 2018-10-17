@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/alexanderwiederin/hrsf105-mini-apps-1#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "jquery": "^3.3.1",
     "nodemon": "^1.18.4",
     "path": "^0.12.7"
   },
