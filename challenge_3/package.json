@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "babel": "babel . --out-dir compiled --presets=@babel/preset-react --ignore=node_modules,compiled --source-maps inline --watch",
+    "babel": "babel client --out-dir public --presets=@babel/preset-react --ignore=node_modules,compiled --source-maps inline --watch",
     "start": "node server.js"
   },
   "repository": {

@@ -1,0 +1,34 @@
+DROP DATABASE IF EXISTS FORMS;
+
+CREATE DATABASE forms;
+
+USE forms;
+
+CREATE TABLE F1 (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  password VARCHAR(150) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE F2 (
+  id INT NOT NULL AUTO_INCREMENT,
+  address_line_1 VARCHAR(50) NOT NULL,
+  address_line_2 VARCHAR(50) NOT NULL,
+  city VARCHAR(100),
+  state VARCHAR(100),
+  zip_code VARCHAR(10),
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE F3 (
+  id INT NOT NULL AUTO_INCREMENT,
+  credit_card_num VARCHAR(50) NOT NULL,
+  expiry_date date,
+  billing_zip_code VARCHAR(10),
+  PRIMARY KEY (id)
+);
+
+
+

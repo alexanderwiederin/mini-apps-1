@@ -1,3 +1,4 @@
+
 class App extends React.Component {
 
 	constructor(props) {
@@ -5,9 +6,12 @@ class App extends React.Component {
 	}
 
 	render() {
-		<div>
-		 <button>Checkout</button>
-		</div>
+		return (
+			<div>
+		  <button>Checkout</button>
+		  </div>
+		)
 	}
 }
 
+ReactDOM.render(<App />, document.getElementById('app'));
