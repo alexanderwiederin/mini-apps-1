@@ -1,0 +1,31 @@
+{
+  "name": "multistep_checkout_experience",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "babel": "babel . --out-dir compiled --presets=@babel/preset-react --ignore=node_modules,compiled --source-maps inline --watch",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderwiederin/hrsf105-mini-apps-1.git"
+  },
+  "author": "alexander wiederin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexanderwiederin/hrsf105-mini-apps-1/issues"
+  },
+  "homepage": "https://github.com/alexanderwiederin/hrsf105-mini-apps-1#readme",
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.4",
+    "path": "^0.12.7"
+  }
+}
