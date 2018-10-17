@@ -67,4 +67,4 @@ var csvConverter = (content) => {
  
 }
 
-module.exports.csvConverter = csvConverter;
+module.exports.csvConverter = csvConverter;	

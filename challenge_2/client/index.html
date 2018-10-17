@@ -5,10 +5,9 @@
 	<body>
 		<div id="main">
 			<h1>CSV Report Generator</h1>
-			<script type="module" src="app.js"></script>
 			<h1>JSON data</h1>
-			<form action="/submit" method="post" target="formattedData">
-				<textarea name="json" id="json"></textarea>
+			<form action="/upload" method="post" target="formattedData" enctype="multipart/form-data">
+				<input type="file" name="json" id="json"></input>
 				<input type="submit" value="submit"/></input>
 			</form>
 			<div>
