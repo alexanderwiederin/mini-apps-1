@@ -19,7 +19,7 @@ app.post('/f1', (request, response) => {
 		}
 	});
 
-})
+});
 
 app.post('/f2', (request, response) => {
 
@@ -33,7 +33,21 @@ app.post('/f2', (request, response) => {
 		}
 	});
 	
-})
+});
+
+app.post('/f3', (request, response) => {
+
+	var answers = request.body;
+
+	databaseMethods.insertIntoF3Table(answers.credit_card_num, answers.expiry_date, answers.billing_zip_code, (error, results) => {
+		if(error) {
+			response.status(500).send();
+		} else {
+			response.status(201).send();
+		}
+	});
+	
+});
 
 app.listen(3000, () => {
 	console.log('listening on port 3000');

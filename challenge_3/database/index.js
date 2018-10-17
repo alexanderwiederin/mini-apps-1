@@ -33,5 +33,18 @@ var insertIntoF2Table = (address_line_1, address_line_2, city, state, zip_code, 
 	});
 }
 
+var insertIntoF3Table = (credit_card_num, expiry_date, billing_zip_code, callback) => {
+	var queryString = 'INSERT INTO F3 (credit_card_num, expiry_date, billing_zip_code) VALUES (?, ?, ?)'
+	dbConnection.query(queryString, [credit_card_num, expiry_date, billing_zip_code], (error, results, fields) => {
+		if (error) {
+			console.log('error on F3', error);
+			callback(error);
+		} else {
+			callback(null, results, fields);
+		}
+	});
+}
+
 module.exports.insertIntoF1Table = insertIntoF1Table;
 module.exports.insertIntoF2Table = insertIntoF2Table;
+module.exports.insertIntoF3Table = insertIntoF3Table;
