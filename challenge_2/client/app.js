@@ -25,6 +25,7 @@ var csvConverter = (content) => {
 
 		for(var key in content) {
 
+
 			if(key !== 'children') {
 
 				obj[key].push(content[key]);
