@@ -10,8 +10,15 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname + '/public')));
 
 app.post('/purchase', (request, response) => {
+	console.log(Object.keys(request.body));
 
-	databaseMethods.insertIntoF1Table(request.body.name, request.body.email, request.body.password, (error, results) => {
+	var dataArray = Object.keys(request.body).map((key) => {
+		return request.body[key];
+	});
+	
+	console.log(dataArray);
+
+	databaseMethods.insertIntoPurchases(dataArray, (error, results) => {
 		if(error) {
 			response.status(500).send();
 		} else {
