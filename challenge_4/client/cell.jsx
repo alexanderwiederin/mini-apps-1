@@ -1,7 +1,9 @@
 import React from 'react';
 
-var Cell = ({playerOne, playerTwo, cell}) => {
-  <div>{cell}</div>
+var Cell = ({cell}) => {
+  return (
+    <span>{cell}</span>
+  )
 }
 
-export default Cell
+export default Cell;

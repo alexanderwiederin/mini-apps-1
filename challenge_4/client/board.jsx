@@ -1,17 +1,18 @@
 import React from 'react';
 import Row from './row.jsx';
 
-var Board = (props) => {
+var Board = ({board}) => {
 
-  console.log(props.board);
+  console.log(board);
 
   return (
     <div>
-
-    {props.board.map((row) => {
-     return (<span>Boardelemetn worked</span>)
+    {board.map((row, i) => {
+     return (
+      <div>
+        <Row row={row} key={i.toString()} />
+      </div>)
     })}
-
     </div>
   )
 }
