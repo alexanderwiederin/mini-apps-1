@@ -5,13 +5,21 @@ class App extends React.Component {
 		super(props)
 
 		this.state = {
-			form: 1,
+			form: 0,
 			formData: {}
 		}
 
+		this.startForm = this.startForm.bind(this);
 		this.submitF1 = this.submitF1.bind(this);
 		this.submitF2 = this.submitF2.bind(this);
 		this.submitF3 = this.submitF3.bind(this);
+		this.finalizePurchase = this.finalizePurchase.bind(this);
+	}
+
+	startForm() {
+
+		this.setState({form: 1});
+
 	}
 
 	submitF1() {
@@ -72,11 +80,26 @@ class App extends React.Component {
 
 	}
 
+	finalizePurchase() {
+		var data = this.state.formData;
+		console.log(data);
+		fetch('/purchase', {
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then((res) => {
+			console.log('success');
+			this.setState({form: 0, formData: {}});
+		});
+	}
+
 	render() {
 		if(this.state.form === 0) {
 			return (
 				<div>
-				<button>Checkout</button>
+				<button onClick={this.startForm}>Checkout</button>
 				</div>
 			)
 		} else if(this.state.form === 1) {
@@ -122,7 +145,7 @@ class App extends React.Component {
 					<div><span>Credit Card Number: </span><span>{this.state.formData.credit_card_num}</span></div>
 					<div><span>Expiry Date: </span><span>{this.state.formData.expiry_date}</span></div>
 					<div><span>Billing Zip Code: </span><span>{this.state.formData.billing_zip_code}</span></div>
-					<button>Purchase</button>
+					<button onClick={this.finalizePurchase}>Purchase</button>
 				</div>
 			)
 		}
