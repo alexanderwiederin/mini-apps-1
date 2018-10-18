@@ -16,15 +16,15 @@ class App extends React.Component {
     this.height = 6;
     this.state = {
 
-      board: undefined,
+      board: this.newBoard(this.height, this.width),
 
       playerOne: {
-        turn: undefined,
+        turn: true,
         color: RED
       },
 
       playerTwo: {
-      turn: undefined,
+      turn: false,
       color: YELLOW
       },
     };
@@ -32,9 +32,6 @@ class App extends React.Component {
     
   }
 
-  componentDidMount() {
-    this.reset();
-  }
 
   reset() {
     var playerOne = {
@@ -65,7 +62,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div></div>
+      <div><Board board={this.state.board} /></div>
     )
   }
 
@@ -74,5 +71,4 @@ class App extends React.Component {
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
-// <Board playerOne={this.state.playerOne} playerTwo={this.state.playerTwo} board={this.state.board} />
 
