@@ -20,10 +20,13 @@ class ConnectFour {
     this.height = HEIGHT;
 
     this.reset = this.reset.bind(this);
-    this.getAll = this.getAll.bind(this);
+    this.getAllRows = this.getAll.bind(this);
     this.getColumn = this.getColumn.bind(this);
     this.getRow = this.getRow.bind(this);
     this.setPiece = this.setPiece.bind(this);
+    this.setPlayer = this.setPlayer.bind(this);
+    this.checkRowforWinner = this.checkRowforWinner.bind(this);
+    this.getAllColumns = this.getAllColumns.bind(this);
 
     this.reset();
   }
@@ -49,7 +52,7 @@ class ConnectFour {
     this.board = this.newBoard(this.height, this.width);
   }
 
-  getAll() {
+  getAllRows() {
     return this.board;
   }
 
@@ -63,6 +66,15 @@ class ConnectFour {
     return result;
   }
 
+  getAllColumns() {
+    var result = [];
+    var columnQuantity = this.getRow(0)[0].length;
+    for(var i = 0; i < columnQuantity; i++) {
+      result.push(this.getColumn(i));
+    }
+    return result;
+  }
+
   getRow(targetRow) {
     var result = [];
     this.board.forEach((piece, rowNumber) => {
@@ -71,7 +83,7 @@ class ConnectFour {
     return result;
   }
 
-  setPiece(targetColumnNumber) {
+  setPlayer() {
     var player = undefined;
 
     if(this.playerOne.turn) {
@@ -80,14 +92,31 @@ class ConnectFour {
       player = this.playerTwo.color;
     }
 
+    return player;
+  }
+
+  setPiece(targetColumnNumber) {
+    var player = this.setPlayer();
+
     var targetColumn = this.getColumn(targetColumnNumber);
     for (var i = 0; i < targetColumn.length; i++) {
-      if (targetColumn[i] !== BLANK) {
-        targetColumn[i - 1] = player;
+      if (i === targetColumn.length - 1 && targetColumn[i] === BLANK) {
+        this.board[i][targetColumnNumber] = player;
+      } else if (targetColumn[i] !== BLANK) {
+        this.board[i - 1][targetColumnNumber] = player;
         return;
       }
     }
   }
+
+  checkRowsForWinner(rowArray) {
+
+  } 
+
+  checkColumnsForWinner(rowArray) {
+    
+  }  
+
 }
 
 // export default connectFour;

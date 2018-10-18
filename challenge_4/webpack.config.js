@@ -11,9 +11,9 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/, // babel needs to run on .js or .jsx files
-        include: [
-          path.resolve(__dirname, '/client')
-        ],
+        // include: [
+        //   path.resolve(__dirname, '/client')
+        // ],
         exclude: [
           path.resolve(__dirname, '/node_modules')
         ],
