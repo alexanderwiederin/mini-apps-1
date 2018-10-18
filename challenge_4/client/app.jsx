@@ -62,7 +62,16 @@ class App extends React.Component {
 
   render() {
     return (
+      <div>
+      <div><button type="button">column 1</button></div>
+      <div><button type="button">column 2</button></div>
+      <div><button type="button">column 3</button></div>
+      <div><button type="button">column 4</button></div>
+      <div><button type="button">column 5</button></div>
+      <div><button type="button">column 6</button></div>
+      <div><button type="button">column 7</button></div>
       <div><Board board={this.state.board} /></div>
+      </div>
     )
   }
 
