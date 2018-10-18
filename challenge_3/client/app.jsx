@@ -16,6 +16,31 @@ class App extends React.Component {
 		this.finalizePurchase = this.finalizePurchase.bind(this);
 	}
 
+	validator(formData, form, callback) {
+		var boolean = true;
+		var missing = [];
+
+		var requiredData = {
+			f1: ['name', 'email', 'password'],
+			f2: ['address_line_1', 'city', 'state', 'zip_code'],
+			f3: ['credit_card_num', 'expiry_date', 'billing_zip_code']
+		}
+
+		requiredData[form].forEach((key) => {
+			if(!formData[key]) {
+				boolean = false;
+				missing.push(key);
+			}
+		})
+
+		if(boolean) {
+			callback(formData);
+		} else {
+			alert('Please enter the following fields : ' + missing.join(" and "));
+		}
+
+	}
+
 	startForm() {
 
 		this.setState({form: 1});
@@ -28,13 +53,16 @@ class App extends React.Component {
 		var email = document.getElementById('email').value;
 		var password = document.getElementById('password').value;
 
+
 		var formData = {
 			name,
 			email,
 			password
 		};
 
-		this.setState({form: 2, formData});
+		this.validator(formData, 'f1', (formData) => {
+			this.setState({form: 2, formData});
+		});
 
 	}
 
@@ -57,7 +85,9 @@ class App extends React.Component {
 
 		var newFormData = Object.assign(formData, oldFormData);
 
-		this.setState({form: 3, formData: newFormData});
+		this.validator(formData, 'f2', (formData) => {
+			this.setState({form: 3, formData: newFormData});
+		});
 
 	}
 
@@ -76,7 +106,10 @@ class App extends React.Component {
 
 		var newFormData = Object.assign(formData, oldFormData);
 
-		this.setState({form: 4, formData: newFormData});
+
+		this.validator(formData, 'f3', (formData) => {
+			this.setState({form: 4, formData: newFormData});
+		});
 
 	}
 

@@ -10,7 +10,7 @@ dbConnection.connect();
 
 var insertIntoPurchases = (dataArray, callback) => {
 
-	var queryString = 'INSERT INTO purchases (address_line_1, address_line_2, billing_zip_code, city, credit_card_num, email, expiry_date, name, password, state, zip_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+	var queryString = 'INSERT INTO purchases (credit_card_num, expiry_date, billing_zip_code, address_line_1, address_line_2,  city, state, zip_code, name, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 	dbConnection.query(queryString, dataArray, (error, results, fields) => {
 		if (error) {
 			console.log('error on insertIntoPurchases', error);
