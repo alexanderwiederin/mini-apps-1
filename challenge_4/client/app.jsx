@@ -29,6 +29,7 @@ class App extends React.Component {
       },
     };
     this.reset = this.reset.bind(this);
+    this.setPlayer = this.setPlayer.bind(this);
     
   }
 
@@ -60,7 +61,21 @@ class App extends React.Component {
     return board;
   }
 
+  setPlayer() {
+    var player = undefined;
+
+    if(this.playerOne.turn) {
+      player = this.playerOne.color;
+    } else {
+      player = this.playerTwo.color;
+    }
+
+    return player;
+  }
+
   render() {
+
+
     return (
       <div>
       <div><button type="button">column 1</button></div>
@@ -71,6 +86,10 @@ class App extends React.Component {
       <div><button type="button">column 6</button></div>
       <div><button type="button">column 7</button></div>
       <div><Board board={this.state.board} /></div>
+      <div></div>
+      <div>Player One: {this.state.playerOne.turn.toString()}</div>
+      <div></div>
+      <div>Player Two: {this.state.playerTwo.turn.toString()}</div>
       </div>
     )
   }
