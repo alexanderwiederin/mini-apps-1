@@ -91,10 +91,9 @@ class App extends React.Component {
 
   setPiece(targetColumnNumber) {
     var player = this.setPlayer();
-    console.log('player ', player);
     var board = this.getAllRows();
-    var playerOne = this.state.playerOne;
-    var playerTwo = this.state.playerOne;
+    var playerOne = Object.assign({},this.state.playerOne);
+    var playerTwo = Object.assign({},this.state.playerTwo);
 
     var targetColumn = this.getColumn(targetColumnNumber);
 
@@ -109,10 +108,10 @@ class App extends React.Component {
     }
 
     playerOne.turn = !playerOne.turn;
-    console.log('playerOne', playerOne);
     playerTwo.turn = !playerTwo.turn;
-    console.log('playerTwo', playerTwo);
+
     this.setState({playerOne, playerTwo, board});
+
   }
 
   render() {
