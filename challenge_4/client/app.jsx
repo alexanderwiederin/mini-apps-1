@@ -78,13 +78,13 @@ class App extends React.Component {
 
     return (
       <div>
-      <div><button type="button">column 1</button></div>
-      <div><button type="button">column 2</button></div>
-      <div><button type="button">column 3</button></div>
-      <div><button type="button">column 4</button></div>
-      <div><button type="button">column 5</button></div>
-      <div><button type="button">column 6</button></div>
-      <div><button type="button">column 7</button></div>
+      <span><button type="button">column 1</button></span>
+      <span><button type="button">column 2</button></span>
+      <span><button type="button">column 3</button></span>
+      <span><button type="button">column 4</button></span>
+      <span><button type="button">column 5</button></span>
+      <span><button type="button">column 6</button></span>
+      <span><button type="button">column 7</button></span>
       <div><Board board={this.state.board} /></div>
       <div></div>
       <div>Player One: {this.state.playerOne.turn.toString()}</div>
