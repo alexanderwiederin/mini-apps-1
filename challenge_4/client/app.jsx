@@ -30,6 +30,8 @@ class App extends React.Component {
     };
     this.reset = this.reset.bind(this);
     this.setPlayer = this.setPlayer.bind(this);
+    this.getColumn = this.getColumn.bind(this);
+    this.setPiece = this.setPiece.bind(this);
     
   }
 
@@ -64,13 +66,45 @@ class App extends React.Component {
   setPlayer() {
     var player = undefined;
 
-    if(this.playerOne.turn) {
-      player = this.playerOne.color;
+    if(this.state.playerOne.turn) {
+      player = this.state.playerOne.color;
     } else {
-      player = this.playerTwo.color;
+      player = this.state.playerTwo.color;
     }
 
     return player;
+  }
+
+  getAllRows() {
+    return this.state.board;
+  }
+
+  getColumn(targetColumn) {
+    var result = [];
+    this.state.board.forEach((row) => {
+      row.forEach((piece, column) => {
+        targetColumn === column ? result.push(piece) : null;
+      });
+    });
+    return result;
+  }
+
+  setPiece(targetColumnNumber) {
+    var player = this.setPlayer();
+    var board = this.getAllRows();
+
+    var targetColumn = this.getColumn(targetColumnNumber);
+
+    for (var i = 0; i < targetColumn.length; i++) {
+      if (i === targetColumn.length - 1 && targetColumn[i] === BLANK) {
+        board[i][targetColumnNumber] = player;
+      } else if (targetColumn[i] !== BLANK) {
+        board[i - 1][targetColumnNumber] = player;
+        console.log(board);
+        break;
+      }
+    }
+    this.setState({board});
   }
 
   render() {
@@ -78,13 +112,13 @@ class App extends React.Component {
 
     return (
       <div>
-      <span><button type="button">column 1</button></span>
-      <span><button type="button">column 2</button></span>
-      <span><button type="button">column 3</button></span>
-      <span><button type="button">column 4</button></span>
-      <span><button type="button">column 5</button></span>
-      <span><button type="button">column 6</button></span>
-      <span><button type="button">column 7</button></span>
+      <span><button type="button" onClick={() => this.setPiece(0)}>column 0</button></span>
+      <span><button type="button" onClick={() => this.setPiece(1)}>column 1</button></span>
+      <span><button type="button" onClick={() => this.setPiece(2)}>column 2</button></span>
+      <span><button type="button" onClick={() => this.setPiece(3)}>column 3</button></span>
+      <span><button type="button" onClick={() => this.setPiece(4)}>column 4</button></span>
+      <span><button type="button" onClick={() => this.setPiece(5)}>column 5</button></span>
+      <span><button type="button" onClick={() => this.setPiece(6)}>column 6</button></span>
       <div><Board board={this.state.board} /></div>
       <div></div>
       <div>Player One: {this.state.playerOne.turn.toString()}</div>
