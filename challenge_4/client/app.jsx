@@ -32,6 +32,7 @@ class App extends React.Component {
     this.setPlayer = this.setPlayer.bind(this);
     this.getColumn = this.getColumn.bind(this);
     this.setPiece = this.setPiece.bind(this);
+    this.checkRow = this.checkRow.bind(this);
     
   }
 
@@ -87,6 +88,18 @@ class App extends React.Component {
       });
     });
     return result;
+  }
+
+  checkRow(rowArray) {
+    var player = this.setPlayer();
+    playerCount = rowArray.reduce((counter, cell) => {
+      if(cell === player) {
+        counter++;
+      }
+      return counter;
+    }, 0);
+
+    return playerCount >= 4 ? true : false;
   }
 
   setPiece(targetColumnNumber) {
